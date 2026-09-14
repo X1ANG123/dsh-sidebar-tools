@@ -1,0 +1,25 @@
+/* The browser tab chip's own content: the site's logo and its host, the way a
+   browser tab reads. The chip chrome — capsule, close control, active state —
+   belongs to the tab strip, not here. */
+
+.chip {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.logo {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  object-fit: contain;
+}
+
+.label {
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

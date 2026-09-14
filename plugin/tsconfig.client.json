@@ -1,0 +1,31 @@
+{
+  "extends": "../../../tsconfig.base.client.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib/types",
+    "tsBuildInfoFile": "lib/tsconfig.client.tsbuildinfo"
+  },
+  // The client face: the two tab bodies, their stores, and the shared leaves.
+  // `config.ts` is here as well as in the host face because the host specs'
+  // fixture imports it and every `tests/**` file belongs to the client
+  // aggregate too — the same reason `file-upload` lists `protocol.ts` twice.
+  "include": [
+    "src/css-modules.d.ts",
+    "src/config.ts",
+    "src/shared.ts",
+    "src/client/**/*.ts",
+    "src/client/**/*.tsx"
+  ],
+  "references": [
+    { "path": "../../../vendor/cordis" },
+    { "path": "../../../vendor/schemastery" },
+    { "path": "../locale" },
+    { "path": "../store" },
+    { "path": "../ui-dockkit" },
+    { "path": "../ui-primitives" },
+    { "path": "../ui-renderer" },
+    { "path": "../ui-session" },
+    { "path": "../ui-sidebar-right" },
+    { "path": "../ui-slots" }
+  ]
+}

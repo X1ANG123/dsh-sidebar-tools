@@ -1,0 +1,72 @@
+/* This pane's own content contract: the frame fills the pane, and the external
+   link follows the product's clickable-link styling. Everything else — body,
+   header, icon controls, status lines — comes from ui-primitives. */
+
+/* This pane's own shell overrides. The shell itself — body, header, icon
+   control, status lines — comes from ui-primitives so every Sidebar pane keeps
+   one grammar; anything browser-only belongs HERE, which is why the pane passes
+   this class, and a change here can never move the terminal pane. */
+.pane {
+  min-width: 0;
+}
+
+/* The frame's host takes the pane's remaining height and gives the frame a
+   definite box. An iframe carries a 300×150 intrinsic size, so a flex-basis of
+   `auto` would let that size — not the pane — decide the layout whenever the
+   pane's own height is not fixed. */
+.fill {
+  position: relative;
+  flex: 0 0 auto;
+  /* The pane does not always hand its body a definite height, so the pane's own
+     measurement (see `usePaneFill`) sets this box; the floor only keeps a
+     settling pane from collapsing the frame. */
+  min-height: 240px;
+}
+
+.frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* The address box is the row's own control: it takes the whole middle of the
+   row, so it is as long as the row allows, and stays shorter than the default
+   field so it lines up with the open button beside it. Its outline is quiet
+   until the pointer or the keyboard is in it. */
+.address {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.address > * {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 26px;
+  padding: 0 10px;
+  background: transparent;
+  border-color: transparent;
+}
+
+.address > *:hover {
+  border-color: var(--dsw-alias-border-l4);
+}
+
+/* The documented clickable-link contract: link color, medium weight, no
+   underline at rest, dotted on hover and focus, with a leading category glyph. */
+.link {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+  color: var(--dsw-alias-link);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover,
+.link:focus-visible {
+  text-decoration: underline dotted;
+  text-underline-offset: 3px;
+}

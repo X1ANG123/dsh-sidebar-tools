@@ -1,0 +1,80 @@
+/* This pane's own content contract: a fixed character grid. The pane shell —
+   body, header, icon control, status lines — comes from ui-primitives'
+   Pane.module.css, so every Sidebar pane computes one style. */
+
+/* This pane's own shell overrides. The shell itself — body, header, icon
+   control, status lines — comes from ui-primitives so every Sidebar pane keeps
+   one grammar; anything terminal-only belongs HERE, which is why the pane passes
+   this class, and a change here can never move the browser pane. */
+.pane {
+  min-width: 0;
+}
+
+.grid {
+  /* Grow into whatever room the pane gives, and never fall below one whole
+     screen: the pane's own height is not always definite, and a grid that
+     collapsed would also make the shell believe it had five rows. */
+  flex: 1 1 auto;
+  /* A floor for the first paint only: the pane hands the grid its own visible
+     height, and a full screen of rows would overflow a shorter pane. */
+  min-height: 120px;
+  overflow: auto;
+  padding: 0 10px 6px;
+  font-family: var(--dsw-font-markdown-code-block-font-family);
+  font-size: var(--dsw-font-markdown-code-block-font-size);
+  line-height: var(--dsw-font-markdown-code-block-line-height);
+  white-space: pre;
+  tab-size: 8;
+  /* The screen is text a reader owns: selecting an error and copying it is a
+     first-class action, not an accident of the layout. */
+  user-select: text;
+  cursor: text;
+}
+
+/* The screen block: rows as text, the cursor as one positioned cell. */
+.screen {
+  position: relative;
+  margin: 0;
+  outline: none;
+}
+
+.row {
+  margin: 0;
+  min-height: var(--dsw-font-markdown-code-block-line-height);
+}
+
+.cursor {
+  position: absolute;
+  top: calc(var(--cursor-y) * var(--dsw-font-markdown-code-block-line-height));
+  left: calc(var(--cursor-x) * 1ch);
+  width: 1ch;
+  height: var(--dsw-font-markdown-code-block-line-height);
+  background: var(--dsw-alias-label-primary);
+  opacity: 0.35;
+}
+
+/* The keyboard sink: focusable, invisible, and never in the layout. */
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  color: transparent;
+  background: transparent;
+  border: 0;
+  outline: none;
+  opacity: 0;
+}
+
+/* The header's sandbox badge sits after the state dot and before the controls. */
+.badge {
+  margin-left: 2px;
+}
+
+.pushEnd {
+  margin-left: auto;
+}
+
+.hint {
+  padding: 0 10px;
+}

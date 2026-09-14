@@ -1,0 +1,67 @@
+/* The right Sidebar's pane grammar. These declarations were lifted verbatim
+   from `ui-sidebar-files`' body so both panes compute identical styles; a
+   change here changes every pane that composes them. */
+
+.body {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: 0;
+  overflow: auto;
+  padding: 4px 0 8px;
+  color: var(--dsw-alias-label-primary);
+  font-size: var(--dsh-content-font-size-secondary, 13px);
+  line-height: 1.5;
+}
+
+/* Content that owns its own scrolling: a fixed grid, an embedded view. */
+.noScroll {
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 6px;
+  align-items: center;
+  padding: 4px 10px;
+  color: var(--dsw-alias-label-secondary);
+  font-weight: 500;
+}
+
+.iconButton {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  color: var(--dsw-alias-label-secondary);
+  background: transparent;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.iconButton:hover:not(:disabled) {
+  background: var(--dsw-alias-interactive-bg-hover);
+}
+
+.iconButton:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 10px;
+}
+
+.statusLine {
+  margin: 0;
+  color: var(--dsw-alias-label-secondary);
+  font-size: var(--dsh-content-font-size-secondary, 13px);
+  line-height: 1.6;
+}

@@ -1,0 +1,7 @@
+# This bundle mounts its own package: installing it with `dsh plugin add`
+# inserts the one row below, and that row name resolves from the installed
+# package directory. The patch carries no machine-specific configuration —
+# set `config:` in your own profile patch when you need to override a default.
+- insert:
+    - id: ui-sidebar-tools
+      name: '@deepseek-ai/dsh-client-ui-sidebar-tools'

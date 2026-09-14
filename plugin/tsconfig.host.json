@@ -1,0 +1,33 @@
+{
+  "extends": "../../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib/types",
+    "tsBuildInfoFile": "lib/tsconfig.host.tsbuildinfo",
+    "types": ["node"]
+  },
+  // The host face: the plugin entry, its routes, and the wire/config leaves both
+  // faces share. `tsconfig.client.json` owns `src/client/**`; the two programs
+  // never merge, because each side augments cordis Context under its own keys.
+  "files": [
+    "src/config.ts",
+    "src/index.ts",
+    "src/shared.ts",
+    "src/host/emulator.ts",
+    "src/host/favicon.ts",
+    "src/host/routes.ts",
+    "src/host/security.ts",
+    "src/host/session.ts",
+    "src/host/terminals.ts"
+  ],
+  "references": [
+    { "path": "../../../vendor/cordis" },
+    { "path": "../../../vendor/schemastery" },
+    { "path": "../../core/agent" },
+    { "path": "../../core/session" },
+    { "path": "../../host/webserver" },
+    { "path": "../../sandbox/sandbox" },
+    { "path": "../../sandbox/sandbox-policy" },
+    { "path": "../../subprocess/subprocess" }
+  ]
+}
